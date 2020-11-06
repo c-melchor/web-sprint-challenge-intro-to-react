@@ -6,13 +6,12 @@ import Character from "./components/Character";
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
-  const [characters, setCharacters] = useState(" ");
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://swapi.dev/api/people")
       .then(res => {
-        // console.log(res.data.results);
         const charactersArray = res.data.results;
         setCharacters(charactersArray);
       })
@@ -29,7 +28,6 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Characters</h1>
       <div>
-        <h2>HELLO TEST TEST</h2>
         <Character people={characters} />
       </div>
     </div>
